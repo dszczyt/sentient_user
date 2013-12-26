@@ -7,7 +7,7 @@ module SentientUser
       end
 
       def self.current=(o)
-        Thread.current[:user] = nil unless o
+        o = nil unless o
         raise(ArgumentError,
             "Expected an object of class '#{self}', got #{o.inspect}") unless (o.is_a?(self) || o.nil?)
         Thread.current[:user] = o
